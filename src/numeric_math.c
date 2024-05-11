@@ -84,6 +84,18 @@ numeric_t *numeric_exp(numeric_t *op1) {
   return res;
 }
 
+// Computes ---> log(op1)
+numeric_t *numeric_log(numeric_t *op1) {
+
+  numeric_t *res = create_numeric(log(op1->n));
+
+  res->op1 = op1;
+
+  res->grad_fn = &LOG_GRAD_CALC_;
+
+  return res;
+}
+
 // Computes ---> abs(op1)
 numeric_t *numeric_abs(numeric_t *op1) {
   numeric_t *res = create_numeric(fabs(op1->n));
@@ -91,6 +103,39 @@ numeric_t *numeric_abs(numeric_t *op1) {
   res->op1 = op1;
 
   res->grad_fn = &ABS_GRAD_CALC_;
+
+  return res;
+}
+
+// Computes ---> sin(op1)
+numeric_t *numeric_sin(numeric_t *op1) {
+  numeric_t *res = create_numeric(sin(op1->n));
+
+  res->op1 = op1;
+
+  res->grad_fn = &SIN_GRAD_CALC_;
+
+  return res;
+}
+
+// Computes ---> cos(op1)
+numeric_t *numeric_cos(numeric_t *op1) {
+  numeric_t *res = create_numeric(cos(op1->n));
+
+  res->op1 = op1;
+
+  res->grad_fn = &COS_GRAD_CALC_;
+
+  return res;
+}
+
+// Computes ---> ReLu(op1)
+numeric_t *numeric_relu(numeric_t *op1) {
+  numeric_t *res = create_numeric(fmax(0, op1->n));
+
+  res->op1 = op1;
+
+  res->grad_fn = &RELU_GRAD_CALC_;
 
   return res;
 }

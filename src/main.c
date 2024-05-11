@@ -6,13 +6,15 @@ int main() {
   numeric_t *b = create_numeric_(2.312, true);
   numeric_t *c = create_numeric_(2, true);
 
-  // abs(a - b) / c
-  numeric_t *loss = numeric_div(numeric_abs(numeric_sub(a, b)), c);
+  // log(abs(a - b) / c)
+  numeric_t *loss =
+      numeric_relu(numeric_div(numeric_cos(numeric_sub(a, b)), c));
 
   // Compute gradients via Backpropagation
   backprop(loss);
 
   // Print variables with stored gradients
+  print_numeric(loss);
   print_numeric(a);
   print_numeric(b);
   print_numeric(c);
