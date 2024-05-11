@@ -17,6 +17,8 @@ numeric_t *create_numeric_(double n, bool store_grad) {
 
 numeric_t *create_numeric(double n) { return create_numeric_(n, false); }
 
+void destroy_numeric(numeric_t *numeric) { free(numeric); }
+
 void store_grad(numeric_t *numeric, double grad) {
   if (!numeric->store_grad)
     return;

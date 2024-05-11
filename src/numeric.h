@@ -20,6 +20,7 @@ struct numeric_t {
 
 numeric_t *create_numeric(double);
 numeric_t *create_numeric_(double, bool);
+void destroy_numeric(numeric_t *);
 void backprop(numeric_t *);
 void print_numeric(numeric_t *);
 void init_numeric_const();
