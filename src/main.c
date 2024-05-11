@@ -6,7 +6,7 @@ int main() {
   numeric_t *b = create_numeric_(2.312, true);
   numeric_t *c = create_numeric_(2, true);
 
-  // log(abs(a - b) / c)
+  // ReLu(cos(a - b) / c)
   numeric_t *loss =
       numeric_relu(numeric_div(numeric_cos(numeric_sub(a, b)), c));
 
