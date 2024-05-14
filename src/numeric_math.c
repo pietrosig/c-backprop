@@ -1,7 +1,12 @@
 #include "numeric.h"
 
+// Creates a result numeric with right operands and grad_function
 numeric_t *numeric_create_result(double result, numeric_t *op1, numeric_t *op2,
                                  grad_calc_t grad_fn) {
+  // Error!!
+  // TODO: Error handling
+  if (op1 == NULL && op2 == NULL)
+    return NULL;
 
   numeric_t *res = create_numeric(result);
 
@@ -21,7 +26,6 @@ numeric_t *numeric_add(numeric_t *op1, numeric_t *op2) {
 
 // Computes ---> op1 - op2
 numeric_t *numeric_sub(numeric_t *op1, numeric_t *op2) {
-
   // partial = -op2
   numeric_t *partial = numeric_mul(op2, NUMERIC_NEG_ONE);
 
@@ -36,7 +40,6 @@ numeric_t *numeric_mul(numeric_t *op1, numeric_t *op2) {
 
 // Computes ---> op1 / op2
 numeric_t *numeric_div(numeric_t *op1, numeric_t *op2) {
-
   // partial = 1 / op2
   numeric_t *partial = numeric_inv(op2);
 
