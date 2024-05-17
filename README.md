@@ -1,5 +1,7 @@
 # c-backprop
-A small (Pyotrch like) Backpropagation implementation in C.
+A small Backpropagation implementation in C.
+It is capable of computing gradients for scalar functions.
+The computational graph is Pyotrch like (i.e. computed at runtime).
 
 ## Run
 Currently this implementation is **compiler dependent** and needs *gcc* (see `src/constant.c` for details).
