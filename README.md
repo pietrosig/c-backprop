@@ -1,5 +1,5 @@
 # c-backprop
-A small, PyTorch like Backpropagation implementation in C.
+A small (Pyotrch like) Backpropagation implementation in C.
 
 ## Run
 Currently this implementation is **compiler dependent** and needs *gcc* (see `src/constant.c` for details).
