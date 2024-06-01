@@ -1,8 +1,6 @@
 #ifndef __MACROS_H_
 #define __MACROS_H_
 
-#include <errno.h>
-
 // Error messages
 #define NULL_POINTER_ERR_(p) "pointer " #p " cannot be NULL"
 
@@ -11,7 +9,6 @@
 
 #define GRAD_FN_INPUT_MISMATCH_ERR_(input, output)                             \
   #input " of grad_calc_t function needs to be an operand of " #output
-
 
 // Error macros
 // Runtime errors if the pointer p is NULL
