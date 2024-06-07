@@ -10,8 +10,9 @@ int main() {
   numeric_t *loss =
       numeric_relu(numeric_div(numeric_cos(numeric_sub(a, b)), c));
 
-  // Compute gradients via Backpropagation
-  backprop(loss);
+
+  // Backward pass
+  backward(loss);
 
   // Print variables with stored gradients
   print_numeric(loss);
