@@ -12,9 +12,12 @@ double ADD_GRAD_CALC_(numeric_t *output, numeric_t *input) {
 double MUL_GRAD_CALC_(numeric_t *output, numeric_t *input) {
   GRAD_FN_INPUT_CHECK_(output, input);
 
-  // Derivative w.r.t. op1 ---> (op1 * op2) / op1 = op2
-  // Derivative w.r.t. op2 ---> (op1 * op2) / op2 = op1
-  return (output->n / input->n);
+  // Derivative w.r.t. op1 ---> op2
+  if (output->op1 == input)
+      return output->op2->n;
+
+  // Derivative w.r.t. op2 ---> op1
+  return output->op1->n;
 }
 
 double POW_GRAD_CALC_(numeric_t *output, numeric_t *input) {
