@@ -1,4 +1,5 @@
 #include "numeric.h"
+#include "errors.h"
 
 numeric_t *create_numeric_(double n, bool store_grad) {
   numeric_t *p = malloc(sizeof(numeric_t));
@@ -20,6 +21,8 @@ numeric_t *create_numeric(double n) { return create_numeric_(n, false); }
 void destroy_numeric(numeric_t *numeric) { free(numeric); }
 
 void store_grad(numeric_t *numeric, double grad) {
+  NULL_POINTER_CHECK_(numeric); // Check if numeric is NULL
+
   if (!numeric->store_grad)
     return;
 
@@ -42,10 +45,15 @@ void backward_(numeric_t *f, double upstream_grad) {
 void backward(numeric_t *f) { backward_(f, 1); }
 
 void print_numeric(numeric_t *n) {
-  printf("<numeric: (%f)", n->n);
 
-  if (n->store_grad)
-    printf("\n    grad: (%f)", n->grad);
+  if (n == NULL) {
+    printf("<numeric: (NULL)");
+  } else {
+    printf("<numeric: (%f)", n->n);
+
+    if (n->store_grad)
+      printf("\n    grad: (%f)", n->grad);
+  }
 
   printf(">\n\n");
 }
