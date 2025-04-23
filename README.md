@@ -6,9 +6,40 @@ The computational graph is Pyotrch like (i.e. computed at runtime).
 ## Run
 Currently this implementation is **compiler dependent** and needs *gcc* (see `src/constant.c` for details).
 
-In order to run:
+In order to run you must install *gcc* and *make*.
 
-1. Install *gcc*
-2. Run `chmod +x ./compile.sh` to add execute permission to the file
-3. Run `./compile.sh`
-4. Run `./c_backprop`
+- Compile `main.c` as the entry point with
+    ```
+    make 
+    ```
+    and run  with
+    ```
+    ./c_backprop
+    ```
+
+- Compile tests for numeric type with
+    ```
+    make test-numeric
+    ```
+    and run  with
+    ```
+    ./test_numeric_bin
+    ```
+
+- Compile tests for tensor type (TODO)
+    
+- Clean executables
+    ```
+    make clean
+    ```
+
+
+## TODO:
+- [ ] Modify Makefile to compile only numeric files with argument test-numeric
+- [ ] Add const to each input of functions requiring it
+- [ ] Verify slicing correctness
+- [ ] Add proper tensor error handling
+- [ ] Add proper comments (documentation) to tensor functions
+- [ ] Implement tensor_math operations
+- [ ] Verify destroy function (right now I'm not sure if we are handling it correctly)
+- [ ] Add tests for tensor functions
