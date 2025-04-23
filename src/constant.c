@@ -1,9 +1,11 @@
 #include "numeric.h"
 
+numeric_t *NUMERIC_ZERO;
 numeric_t *NUMERIC_POS_ONE;
 numeric_t *NUMERIC_NEG_ONE;
 
 void init_numeric_const() {
+  NUMERIC_ZERO = create_numeric(0);
   NUMERIC_POS_ONE = create_numeric(1);
   NUMERIC_NEG_ONE = create_numeric(-1);
 }

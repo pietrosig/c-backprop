@@ -1,24 +1,26 @@
+#include "tensor.h"
 #include "numeric.h"
 
 int main() {
-  // true enables gradient storing
-  numeric_t *a = create_numeric_(-3.6, true);
-  numeric_t *b = create_numeric_(2.312, true);
-  numeric_t *c = create_numeric_(2, true);
+  tensor_t *a;
+  tensor_t *b;
+  tensor_t *c;
 
-  // ReLu(cos(a - b) / c)
-  numeric_t *loss =
-      numeric_relu(numeric_div(numeric_cos(numeric_sub(a, b)), c));
+  STORE_GRAD {
+    a = TENSOR_ARANGE(10);
+    b = TENSOR_ARANGE(0, 20, 2);
+  }
 
+  tensor_print(a);
+  tensor_print(b);
 
-  // Backward pass
-  backward(loss);
+  c = tensor_sum(tensor_hadamard(a, b), -1);
 
-  // Print variables with stored gradients
-  print_numeric(loss);
-  print_numeric(a);
-  print_numeric(b);
-  print_numeric(c);
+  tensor_print(c);
+  tensor_backward(c);
+
+  tensor_print_grad(a);
+  tensor_print_grad(b);
 
   return 0;
 }
