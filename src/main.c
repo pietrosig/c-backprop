@@ -14,8 +14,8 @@ int main() {
   tensor_print(a);
   tensor_print(b);
 
-  c = tensor_sum(tensor_hadamard(a, b), -1);
-
+  c = tensor_sum(tensor_hadamard(a, b), (ssize_t) -1);
+ 
   tensor_print(c);
   tensor_backward(c);
 

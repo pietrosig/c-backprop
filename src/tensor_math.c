@@ -58,12 +58,12 @@ tensor_t *tensor_add(const tensor_t *t1, const tensor_t *t2) {
 }
 
 // Will sum each element of the tensor on a given dimension
-tensor_t *tensor_sum(const tensor_t *t, const size_t dim) {
+tensor_t *tensor_sum(const tensor_t *t, const ssize_t dim) {
     NULL_POINTER_CHECK_(t);
 
     // Ensure the dimension is valid
-    if (dim < -1 || dim >= t->ndim) {
-        printf("Invalid dimension: %zu for a tensor with %zu dimensions\n", dim, t->ndim);
+    if (dim < -1 || dim >= (ssize_t) t->ndim) {
+        printf("Invalid dimension: %zd for a tensor with %zu dimensions\n", dim, t->ndim);
         assert(false);
     }
 

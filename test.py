@@ -3,7 +3,7 @@ import torch
 
 def run_make_test():
     print("🛠️  Running `make test`...")
-    result = subprocess.run(["make", "test"], capture_output=True, text=True)
+    result = subprocess.run(["make", "test-numeric"], capture_output=True, text=True)
     if result.returncode != 0:
         print("❌ Make failed:")
         print(result.stderr)
@@ -11,7 +11,7 @@ def run_make_test():
     print("✅ Make succeeded")
     return True
 
-def run_test_binary(binary_path="./test_bin"):
+def run_test_binary(binary_path="./test_numeric_bin"):
     print(f"🚀 Running test binary `{binary_path}`...")
     result = subprocess.run([binary_path], capture_output=True, text=True)
     if result.returncode != 0:
@@ -27,7 +27,7 @@ def run_test_binary(binary_path="./test_bin"):
         if line:
             key, value = line.split(":")
             out_dict[key.strip()] = value.strip()
-    
+
     return out_dict
 
 def run_pytorch_test():
@@ -51,7 +51,7 @@ def run_pytorch_test():
     out_dict["c_grad"] = "{:.6f}".format(c.grad.item())
     out_dict["d_grad"] = "{:.6f}".format(d.grad.item())
     out_dict["e_grad"] = "{:.6f}".format(e.grad.item())
-    
+
     print("✅ Done.")
 
     return out_dict

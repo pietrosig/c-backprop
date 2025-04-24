@@ -36,6 +36,6 @@ void tensor_backward(tensor_t *);
 // Math
 tensor_t *tensor_hadamard(const tensor_t *, const tensor_t *);
 tensor_t *tensor_add(const tensor_t *, const tensor_t *);
-tensor_t *tensor_sum(const tensor_t *, const size_t);
+tensor_t *tensor_sum(const tensor_t *, const ssize_t);
 
 #endif
